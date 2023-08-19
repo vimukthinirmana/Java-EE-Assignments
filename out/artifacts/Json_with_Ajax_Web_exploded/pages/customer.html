@@ -116,7 +116,6 @@
                     let row=`<tr><td>${id}</td><td>${name}</td><td>${address}</td></tr>`;
                     $("#tblCustomer").append(row);
                 }
-                alert(customers.message);
             },
             error:function(error){
                 console.log(error);
@@ -127,7 +126,7 @@
     $("#btnCustomer").click(function (){
         let formData=$("#customerForm").serialize();
         $.ajax({
-            url:"customer?option=add",
+            url:"customer",
             method:"post",
             data:formData,
             success:function (res){
@@ -146,11 +145,17 @@
     $("#btnCusDelete").click(function(){
         let formData=$("#customerForm").serialize();
         $.ajax({
-            url:'customer?option=delete',
-            method:'post',
+            url:'customer',
+            method:'delete',
             data:formData,
             success:function (resp){
+                console.log(resp);
+                alert(resp.message);
                 getAllCustomers();
+            },
+            error:function (error){
+                console.log(error.responseJSON);
+                alert(error.responseJSON.message);
             }
         });
     });
@@ -158,11 +163,17 @@
     $("#btnUpdate").click(function (){
         let formData=$("#customerForm").serialize();
         $.ajax({
-            url:'customer?option=update',
-            method:'post',
+            url:'customer',
+            method:'put',
             data:formData,
             success:function (resp){
+                console.log(resp);
+                alert(resp.message);
                 getAllCustomers();
+            },
+            error:function (error){
+                console.log(error.responseJSON);
+                alert(error.responseJSON.message);
             }
         });
     });
