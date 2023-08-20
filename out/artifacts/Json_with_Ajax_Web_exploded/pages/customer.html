@@ -91,8 +91,6 @@
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 
-
-<!--bind a event on btn GetAll btn-->
 <script>
 
     getAllCustomers();
@@ -103,7 +101,6 @@
 
     function getAllCustomers(){
         $("#tblCustomer").empty();
-        <!--send ajax request to the customer servlet using jQuery-->
         $.ajax({
             url: 'customer',
             dataType:"json",
@@ -126,7 +123,7 @@
     $("#btnCustomer").click(function (){
         let formData=$("#customerForm").serialize();
         $.ajax({
-            url:"customer",
+            url:"customer?option=add",
             method:"post",
             data:formData,
             success:function (res){
@@ -145,8 +142,8 @@
     $("#btnCusDelete").click(function(){
         let formData=$("#customerForm").serialize();
         $.ajax({
-            url:'customer',
-            method:'delete',
+            url:'customer?option=delete',
+            method:'post',
             data:formData,
             success:function (resp){
                 console.log(resp);
@@ -163,8 +160,8 @@
     $("#btnUpdate").click(function (){
         let formData=$("#customerForm").serialize();
         $.ajax({
-            url:'customer',
-            method:'put',
+            url:'customer?option=update',
+            method:'post',
             data:formData,
             success:function (resp){
                 console.log(resp);
@@ -179,8 +176,6 @@
     });
 </script>
 
-
-<!--when the response received catch it and set it to the table-->
 
 
 </body>
