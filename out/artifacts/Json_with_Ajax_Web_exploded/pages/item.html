@@ -1,7 +1,4 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="lk.ijse.jsp.dto.ItemDTO" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,9 +20,8 @@
     <h1 class="position-absolute" id="nav"></h1>
     <ul class="list-group list-group-horizontal text-danger justify-content-end font-weight-bold">
         <li class="list-group-item bg-white" id="lnkHome"><a href="../index.jsp">Home</a></li>
-        <li class="list-group-item bg-white" id="lnkCustomer"><a class="text-white"
-                                                                 href="/jsonp/pages/customer">Customer</a></li>
         <li class="list-group-item bg-danger text-white" id="lnkItem"><a class="text-white" href="/jsonp/pages/item">Item</a>
+        <li class="list-group-item bg-white" id="lnkCustomer"><a href="/jsonp/pages/customer">Customer</a></li>
         </li>
         <li class="list-group-item bg-white" id="lnkOrders"><a href="purchase-order.jsp">Orders</a></li>
     </ul>
@@ -174,6 +170,23 @@
             }
         });
     });
+
+
+    $("#tblItem").on("click", "tr", function () {
+        let itemCode = $(this).find('td:eq(0)').text();
+        let itemName = $(this).find('td:eq(1)').text();
+        let itemQty = $(this).find('td:eq(2)').text();
+        let itemPrice = $(this).find('td:eq(3)').text();
+
+        //set value to textField
+        $("#itemCode").val(itemCode);
+        $("#itemName").val(itemName);
+        $("#itemQty").val(itemQty);
+        $("#itemPrice").val(itemPrice);
+    });
+
+
+
 
 </script>
 
